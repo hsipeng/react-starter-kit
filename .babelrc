@@ -1,0 +1,25 @@
+{
+  "presets": [
+    "env",
+    "react",
+    "stage-0",
+    "flow"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-decorators-legacy",
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "pages": ["./pages"],
+        "utils": ["./utils"],
+        "store": ["./redux/store"],
+        "view": ["./view"],
+        "components": ["./components"],
+        "router": ["./router"],
+        "actions": ["./redux/actions"],
+        "reducers": ["./redux/reducers"]
+      }
+    }]
+  ]
+}
