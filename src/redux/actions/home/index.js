@@ -1,4 +1,4 @@
-import {reqAjax} from 'utils/CreateAjax'
+import { reqAjax } from '../../../utils/CreateAjax'
 
 export const act1 = 'HOME/act1'
 const HomeAct1 = (params) => dispatch =>

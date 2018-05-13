@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
 
-import { makeAllReducer } from 'utils/createReducer'
+import { makeAllReducer } from '../../utils/createReducer'
 
 export default (initialState = {}, initialReducer = {}) => {
 	const middlewares = [thunk]

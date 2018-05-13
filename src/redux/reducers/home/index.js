@@ -1,5 +1,5 @@
-import {createReducer} from 'utils/createReducer'
-import ACTION_HANLDERS from 'actions/home'
+import {createReducer} from '../../../utils/createReducer'
+import ACTION_HANLDERS from '../../actions/home'
 let initState ={
 }
 

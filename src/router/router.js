@@ -1,11 +1,9 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Home from 'view/home';
-import Hello from 'view/hello';
-import NotFound from 'view/notFound';
-import Cavans from 'view/d3/cavans.jsx';
-import Svg from 'view/d3/svg.jsx';
-// import Loadable from 'react-loadable'
+import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import Home from '../view/home';
+import Hello from '../view/hello';
+import Nav from '../components/Nav/Nav';
+// import Loadable from 'react-loadable';
 
 // //  按需加载
 // const MyLoadingComponent = ({isLoading, error}) => {
@@ -23,21 +21,24 @@ import Svg from 'view/d3/svg.jsx';
 //   };
 
 //   const AsyncHome = Loadable({
-//     loader: () => import('view/home'),
+//     loader: () => import('../view/home'),
 //     loading: MyLoadingComponent
 //   });
 
 //   const AsyncHello = Loadable({
-//     loader: () => import('view/hello'),
+//     loader: () => import('../view/hello'),
 //     loading: MyLoadingComponent
 //   });
 
 export default () => (
+    <BrowserRouter>
+    <div>
+    <Nav/>
     <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/hello" component={Hello}/>
-        <Route path="/cavans" component={Cavans}/>
-        <Route path="/svg" component={Svg}/>
-        <Route path="*" component={NotFound}/>
     </Switch>
+    </div>
+    
+    </BrowserRouter>
 )

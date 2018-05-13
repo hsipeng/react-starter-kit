@@ -1,4 +1,4 @@
-import { reqAjax } from 'utils/CreateAjax'
+import { reqAjax } from '../../../utils/CreateAjax'
 
 export const act1 = 'HELLO/act1'
 
