@@ -1,10 +1,11 @@
-import { applyMiddleware } from 'redux'
-import createStore from './createStore'
-import reducer, { key } from '../reducers/home'
+import createStore from "./createStore";
+import reducer, { key, initState } from "../reducers/counter2";
 
-const store  = createStore({} , {
-	[key]: reducer
-})
+const store = createStore(
+  {},
+  {
+    [key]: reducer
+  }
+);
 
-
-export default store
+export default store;

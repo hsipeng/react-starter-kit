@@ -1,31 +1,49 @@
-import { applyMiddleware, compose, createStore } from 'redux'
-import thunk from 'redux-thunk'
-
-import { makeAllReducer } from 'utils/createReducer'
+import {
+  applyMiddleware,
+  compose,
+  createStore as createReduxStore
+} from "redux";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+import makeRootReducer from "./reducers";
 
 export default (initialState = {}, initialReducer = {}) => {
-	const middlewares = [thunk]
+  /**
+  |--------------------------------------------------
+  | Middleware Configuration
+  |--------------------------------------------------
+  */
+  const middleware = [thunk];
 
-	const enhancers = []
+  /**
+  |--------------------------------------------------
+  | Store Enhancers
+  |--------------------------------------------------
+  */
+  const enhancers = [];
+  let composeEnhancers = compose;
 
-	if (process.env.NODE_ENV === 'development') {
-		const devToolsExtension = window.devToolsExtension;
-		if (typeof devToolsExtension === 'function') {
-			enhancers.push(devToolsExtension())
-		}
-	}
+  if (process.env.NODE_ENV === "development") {
+    if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === "function") {
+      composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+    }
+    console.log("现在的环境是", process.env.NODE_ENV);
+    middleware.push(logger);
+  }
 
-	const store = createStore(
-		makeAllReducer(initialReducer),
-		initialState,
-		compose(
-			applyMiddleware(...middlewares),
-			...enhancers
-		)
-	)
+  /**
+  |--------------------------------------------------
+  | Store Instantiation and HMR Setup
+  |--------------------------------------------------
+  */
+  const store = createReduxStore(
+    makeRootReducer(initialReducer),
+    initialState,
+    composeEnhancers(applyMiddleware(...middleware), ...enhancers)
+  );
+  store.asyncReducers = {
+    ...initialReducer
+  };
 
-	store.asyncReducers = {
-		...initialReducer
-	}
-	return store
-}
+  return store;
+};
