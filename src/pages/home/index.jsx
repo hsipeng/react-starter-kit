@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import Counter from "../../components/counter/Counter";
+import React, {Component} from 'react';
+import Counter from '@/components/counter/Counter';
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      num: 0
+      num: 0,
     };
   }
 
   handleAddClick = () => {
     let sum = this.state.num + 1;
     this.setState({
-      num: sum
+      num: sum,
     });
   };
 
@@ -20,7 +20,7 @@ export default class Home extends Component {
     let sum = this.state.num - 1;
     sum < 0 ? (sum = 0) : sum;
     this.setState({
-      num: sum
+      num: sum,
     });
   };
 

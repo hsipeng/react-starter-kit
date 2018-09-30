@@ -5,7 +5,11 @@
   "license": "MIT",
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
-      "prettier --single-quote --write"
+      "prettier --single-quote --print-width 120 --write"
+    ],
+    "*.less": [
+      "stylelint --fix",
+      "prettier --parser less --print-width 120 --write"
     ]
   },
   "scripts": {
@@ -13,6 +17,7 @@
     "start": "cross-env NODE_ENV=development webpack-serve --open",
     "build": "cross-env NODE_ENV=production webpack",
     "serve": "anywhere -d ./build/ -f -l",
+    "stylelint": "stylelint --fix",
     "test": "cross-env NODE_ENV=test jest --env=jsdom --notify --watchman=false",
     "coverage": "cross-env NODE_ENV=test jest --env=jsdom -u --coverage"
   },
@@ -29,7 +34,18 @@
     "plugins": [
       "react-hot-loader/babel",
       "@babel/plugin-syntax-dynamic-import",
-      "@babel/plugin-proposal-class-properties"
+      "@babel/plugin-proposal-class-properties",
+      [
+        "module-resolver",
+        {
+          "root": [
+            "."
+          ],
+          "alias": {
+            "@": "./src"
+          }
+        }
+      ]
     ],
     "env": {
       "test": {
@@ -46,7 +62,18 @@
           "react-hot-loader/babel",
           "@babel/plugin-syntax-dynamic-import",
           "@babel/plugin-proposal-class-properties",
-          "@babel/plugin-transform-modules-commonjs"
+          "@babel/plugin-transform-modules-commonjs",
+          [
+            "module-resolver",
+            {
+              "root": [
+                "."
+              ],
+              "alias": {
+                "@": "./src"
+              }
+            }
+          ]
         ]
       }
     }
@@ -81,7 +108,25 @@
     ],
     "moduleDirectories": [
       "node_modules"
-    ]
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 95,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    }
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-prettier",
+      "stylelint-config-standard"
+    ],
+    "rules": {
+      "indentation": 2,
+      "string-quotes": "single"
+    }
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
@@ -118,6 +163,7 @@
     "babel-eslint": "^9.0.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.2",
+    "babel-plugin-module-resolver": "^3.1.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "chalk": "^2.4.1",
@@ -133,6 +179,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-fbjs": "^2.0.1",
     "eslint-config-prettier": "^3.0.1",
+    "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-plugin-babel": "^5.2.0",
     "eslint-plugin-flowtype": "^2.50.0",
     "eslint-plugin-html": "^4.0.5",
@@ -159,12 +206,16 @@
     "object-assign": "^4.1.1",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.14.2",
+    "prettier-stylelint": "^0.4.2",
     "progress-bar-webpack-plugin": "^1.11.0",
     "promise": "^8.0.2",
     "react-test-renderer": "^16.5.1",
     "regenerator-runtime": "^0.12.1",
     "style-loader": "^0.23.0",
     "styled-components": "^3.4.6",
+    "stylelint": "^9.5.0",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-standard": "^18.2.0",
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.0",
     "webpack-merge": "^4.1.4",
