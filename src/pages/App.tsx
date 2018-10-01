@@ -1,13 +1,16 @@
-import React, {Component} from 'react';
-import LeftMenu from '../components/leftMenu/';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Main from '../components/Main';
-import Style from '../assets/style/index.css';
+import * as React from 'react';
+import LeftMenu from '@/components/leftMenu';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Main from '@/components/Main';
+const Style = require('@/assets/style/index.css');
 import {hot} from 'react-hot-loader';
 
-class App extends Component {
-  constructor(props) {
+export interface IProps {}
+
+export interface IState {}
+class App extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
     this.state = {};
   }

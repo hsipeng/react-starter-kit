@@ -1,14 +1,21 @@
-import React, {Component} from 'react';
-import Proptypes from 'prop-types';
+import * as React from 'react';
 import Counter from '@/components/counter/Counter';
 import {connect} from 'react-redux';
 import {addStar, reduceStar} from '@/redux/actions/counter';
-class Home extends Component {
-  static propTypes = {
-    num: Proptypes.number,
-    onIncreaseClick: Proptypes.func,
-    onReduceClick: Proptypes.func,
-  };
+
+export interface IProps{
+  num: Number,
+  onIncreaseClick: Function,
+  onReduceClick: Function,
+}
+
+export interface IState{
+  counter: {
+    num: Object,
+  }
+}
+class Home extends React.Component<IProps,IState> {
+
   render() {
     return (
       <Counter
@@ -21,13 +28,13 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
   return {
     num: state.counter.num,
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
   return {
     onIncreaseClick: () => dispatch(addStar()),
     onReduceClick: () => dispatch(reduceStar()),
@@ -37,4 +44,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(Home as any);

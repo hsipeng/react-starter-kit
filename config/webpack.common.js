@@ -9,8 +9,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
+        test: /\.ts|\.tsx|\.js|\.jsx$/,
+        loader: [
+          'babel-loader',
+          'awesome-typescript-loader',
+        ],
         exclude: /(node_modules)/,
       },
       {
@@ -41,7 +44,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
     alias: {
       '@': commonPaths.srcPath,
     },

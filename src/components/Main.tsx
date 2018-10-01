@@ -1,6 +1,6 @@
 import React from "react";
-import Routers from "../router";
-import Style from "../assets/style/index.css";
+import Routers from "@/router";
+const Style = require("../assets/style/index.css");
 
 export default () => {
   return (

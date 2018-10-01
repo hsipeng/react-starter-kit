@@ -1,13 +1,23 @@
-import Proptypes from "prop-types";
-import React, { Component } from "react";
+import * as React from "react";
 
-export default class Counter extends Component {
-  static propTypes = {
-    num: Proptypes.number.isRequired,
-    handleAddClick: Proptypes.func.isRequired,
-    handleRemoveClick: Proptypes.func.isRequired
-  };
+export interface IProps {
+  num?: Number,
+  name: String,
+  handleAddClick: Function,
+  handleRemoveClick: Function,
+}
 
+export interface IState {
+
+}
+export default class Counter extends React.Component<
+  IProps,
+  IState
+  > {
+
+  constructor(props: IProps){
+    super(props);
+  }
   static defaultProps = {
     num: 0
   };

@@ -1,8 +1,20 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import Counter from '@/components/counter/Counter';
 
-export default class Home extends Component {
-  constructor(props) {
+export interface IProps {}
+
+export interface IState {
+  num?: any;
+}
+export default class Home extends React.Component<
+  IProps,
+  IState
+> {
+  
+  static defaultProps = {
+    num: 0,
+  };
+  constructor(props: IProps) {
     super(props);
     this.state = {
       num: 0,

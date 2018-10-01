@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import _ from "lodash";
-import Clock from "./clock";
+import Clock from "@/components/clock";
 const Button = styled.a`
   /* This renders the buttons above... Edit me! */
   display: inline-block;
@@ -12,15 +12,6 @@ const Button = styled.a`
   background: transparent;
   color: white;
   border: 2px solid white;
-
-  /* The GitHub button is a primary button
-   * edit this to target it specifically! */
-  ${props =>
-    props.primary &&
-    css`
-      background: white;
-      color: palevioletred;
-    `};
 `;
 
 export default () => {
@@ -34,7 +25,6 @@ export default () => {
         href="https://github.com/styled-components/styled-components"
         target="_blank"
         rel="styled-components"
-        primary
       >
         styled-components
       </Button>

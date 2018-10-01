@@ -1,25 +1,25 @@
-import AsyncLoad from '../components/AsyncLoad';
-import React from 'react';
-import Avatar from '../assets/images/avatar.png';
+import AsyncLoad from '@/components/AsyncLoad';
+import * as React from 'react';
+const Avatar = require('../assets/images/avatar.png');
 
 const AsyncHome = AsyncLoad({
   loader: () =>
-    import(/* webpackChunkName: "reduxHome" */ '../pages/home'),
+    import(/* webpackChunkName: "reduxHome" */ '@/pages/home'),
 });
 
 const AsyncReduxHome = AsyncLoad({
   loader: () =>
-    import(/* webpackChunkName: "reduxHome" */ '../pages/reduxHome'),
+    import(/* webpackChunkName: "reduxHome" */ '@/pages/reduxHome'),
 });
 
 const AsyncReduxHome2 = AsyncLoad({
   loader: () =>
-    import(/* webpackChunkName: "reduxHome2" */ '../pages/reduxHome2'),
+    import(/* webpackChunkName: "reduxHome2" */ '@/pages/reduxHome2'),
 });
 
 const AsyncAjax = AsyncLoad({
   loader: () =>
-    import(/* webpackChunkName: "AsyncAjax" */ '../pages/ajax'),
+    import(/* webpackChunkName: "AsyncAjax" */ '@/pages/ajax'),
 });
 const routes = [
   {

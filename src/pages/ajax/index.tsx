@@ -1,7 +1,16 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import HTTP from '@/utils/http';
-export default class AjaxDemo extends Component {
-  constructor(props) {
+export interface IProps {}
+
+export interface IState {
+  data?: String
+}
+
+export default class AjaxDemo extends React.Component<
+  IProps,
+  IState
+> {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       data: '',
@@ -10,7 +19,7 @@ export default class AjaxDemo extends Component {
 
   onHandleAjaxClick = () => {
     const _this = this;
-    HTTP.get('/todos/1', {}).then(response => {
+    HTTP.get('/todos/1', {}).then((response: any) => {
       _this.setState({
         data: response.data,
       });

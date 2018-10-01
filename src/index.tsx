@@ -1,11 +1,10 @@
 import '@babel/polyfill';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './pages/App';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import App from '@/pages/App';
 import {Provider} from 'react-redux';
-import store from './redux/store';
+import store from '@/redux/store';
 import {BrowserRouter} from 'react-router-dom';
-import config from '../config';
 // becomes dead code in builds other than dev,
 // which webpack should pick up and remove.
 

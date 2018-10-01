@@ -11,7 +11,7 @@ module.exports = {
   entryPath: path.resolve(
     __dirname,
     '../',
-    'src/index.jsx'
+    'src/index.tsx'
   ),
   templatePath: path.resolve(
     __dirname,

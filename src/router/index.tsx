@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import routes from "./routes";
+import routes from "@/router/routes";
 
 // import AsyncLoad from "../components/AsyncLoad";
 

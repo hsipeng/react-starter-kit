@@ -1,5 +1,5 @@
-import Loadable from 'react-loadable'
-import Loading from './Loading'
+import Loadable from 'react-loadable';
+import Loading from '@/components/Loading';
 
 export default function AsyncLoad(opts) {
   return Loadable({
@@ -7,5 +7,5 @@ export default function AsyncLoad(opts) {
     loading: Loading,
     delay: 200,
     timeout: 2000,
-  })
-};
+  });
+}
