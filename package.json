@@ -94,6 +94,7 @@
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.(ts|tsx)$": "ts-jest",
       "^.+\\.(css|scss|less)$": "<rootDir>/config/jest/cssTransform.js"
     },
     "transformIgnorePatterns": [
@@ -103,6 +104,8 @@
       "^react-native$": "react-native-web"
     },
     "moduleFileExtensions": [
+      "ts",
+      "tsx",
       "js",
       "jsx"
     ],
@@ -163,6 +166,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
+    "@types/jest": "^23.3.2",
     "@types/lodash": "^4.14.116",
     "autoprefixer": "^9.1.5",
     "awesome-typescript-loader": "^5.2.1",
@@ -223,6 +227,7 @@
     "stylelint": "^9.5.0",
     "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-standard": "^18.2.0",
+    "ts-jest": "^23.10.3",
     "tslint": "^5.11.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.1",
