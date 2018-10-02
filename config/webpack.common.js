@@ -10,10 +10,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts|\.tsx|\.js|\.jsx$/,
-        loader: [
-          'babel-loader',
-          'awesome-typescript-loader',
-        ],
+        loader: 'babel-loader',
         exclude: /(node_modules)/,
       },
       {
