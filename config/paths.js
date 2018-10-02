@@ -6,6 +6,12 @@ module.exports = {
   outputPath: path.resolve(__dirname, '../', 'build'),
   staticPath: path.resolve(__dirname, '../', 'static'),
   publicPath: path.resolve(__dirname, '../', 'public'),
+  serverFileName: 'server.js',
+  serverEntry: path.resolve(
+    __dirname,
+    '../',
+    'server/index.js'
+  ),
   assetsPublicPath: '/',
   cleanPaths: ['build'],
   entryPath: path.resolve(

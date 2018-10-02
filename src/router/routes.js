@@ -1,33 +1,16 @@
-import AsyncLoad from '../components/AsyncLoad';
 import React from 'react';
-import Avatar from '../assets/images/avatar.png';
+import Avatar from '@/assets/images/avatar.png';
+import Home from '@/pages/home';
+import ReduxHome from '@/pages/reduxHome';
 
-const AsyncHome = AsyncLoad({
-  loader: () =>
-    import(/* webpackChunkName: "reduxHome" */ '../pages/home'),
-});
-
-const AsyncReduxHome = AsyncLoad({
-  loader: () =>
-    import(/* webpackChunkName: "reduxHome" */ '../pages/reduxHome'),
-});
-
-const AsyncReduxHome2 = AsyncLoad({
-  loader: () =>
-    import(/* webpackChunkName: "reduxHome2" */ '../pages/reduxHome2'),
-});
-
-const AsyncAjax = AsyncLoad({
-  loader: () =>
-    import(/* webpackChunkName: "AsyncAjax" */ '../pages/ajax'),
-});
-const routes = [
+export default [
   {
     id: '1',
     parent: '0',
     path: '/',
     name: 'home',
-    component: AsyncHome,
+    exact: true,
+    component: Home,
     routes: [],
   },
   {
@@ -35,7 +18,7 @@ const routes = [
     parent: '0',
     path: '/counter',
     name: 'counter',
-    component: AsyncReduxHome,
+    component: ReduxHome,
   },
   {
     id: '3',
@@ -43,14 +26,6 @@ const routes = [
     path: '/counter/page2',
     name: 'counter/page2',
     component: () => <span>page2</span>,
-  },
-  {
-    id: '4',
-    parent: '0',
-    path: '/counter2',
-    name: 'counter2',
-    component: AsyncReduxHome2,
-    routes: [],
   },
   {
     id: '5',
@@ -64,14 +39,4 @@ const routes = [
     ),
     routes: [],
   },
-  {
-    id: '6',
-    parent: '0',
-    path: '/http',
-    name: 'http',
-    component: AsyncAjax,
-    routes: [],
-  },
 ];
-
-export default routes;

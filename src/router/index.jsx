@@ -1,33 +1,19 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import routes from "./routes";
+import React from 'react';
+import {renderRoutes} from 'react-router-config';
+import Routes from './Routes';
+import Header from '@/components/Header';
+import LeftMenu from '@/components/leftMenu';
+import Footer from '@/components/Footer';
 
-// import AsyncLoad from "../components/AsyncLoad";
-
-// const AsyncHome = AsyncLoad({
-//   loader: () => import(/* webpackChunkName: "reduxHome" */ "../pages/home/")
-// });
-
-// const AsyncReduxHome = AsyncLoad({
-//   loader: () =>
-//     import(/* webpackChunkName: "reduxHome" */ "../pages/reduxHome/")
-// });
-
-// const AsyncReduxHome2 = AsyncLoad({
-//   loader: () =>
-//     import(/* webpackChunkName: "reduxHome2" */ "../pages/reduxHome2/")
-// });
-
-const Routers = () => (
-  <Switch>
-    {/* <Route exact path="/" component={AsyncHome} />
-    <Route path="/counter" component={AsyncReduxHome} />
-    <Route path="/counter2" component={AsyncReduxHome2} /> */}
-    {routes.map((route, i) => (
-      <Route exact path={route.path} key={i} component={route.component} />
-    ))}
-    <Route render={() => <span>404</span>} />
-  </Switch>
-);
-
-export default Routers;
+export default () => {
+  return (
+    <div>
+      <Header />
+      <div className="container">
+        <LeftMenu />
+        {renderRoutes(Routes)}
+      </div>
+      <Footer />
+    </div>
+  );
+};

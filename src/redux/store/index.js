@@ -1,11 +1,9 @@
-import createStore from "./createStore";
-import reducer, { key, initState } from "../reducers/counter2";
+import {applyMiddleware, createStore} from 'redux';
+import rootReducer from '../reducers';
+import reduxThunk from 'redux-thunk';
 
-const store = createStore(
+export default createStore(
+  rootReducer,
   {},
-  {
-    [key]: reducer
-  }
+  applyMiddleware(reduxThunk)
 );
-
-export default store;
