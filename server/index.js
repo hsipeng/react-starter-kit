@@ -1,45 +1,16 @@
+/* eslint no-console:0 */
 import '@babel/polyfill';
-import express from 'express';
-import {matchRoutes} from 'react-router-config';
-import render from './render';
-import store from '../src/redux/store';
-import Routes from '../src/router/Routes';
+import http from 'http';
+import createApp from './app';
 
-const PORT = process.env.PORT || 8079;
-const app = express();
+const PORT = process.env.PORT || 7000;
 
-app.use('/assets', express.static('build/assets'));
-app.get('*', async (req, res) => {
-  const actions = matchRoutes(Routes, req.path)
-    .map(
-      ({route}) =>
-        route.component.fetching
-          ? route.component.fetching({
-              ...store,
-              path: req.path,
-            })
-          : null
-    )
-    .map(
-      async actions =>
-        await Promise.all(
-          (actions || []).map(
-            p =>
-              p &&
-              new Promise(resolve =>
-                p.then(resolve).catch(resolve)
-              )
-          )
-        )
-    );
-
-  await Promise.all(actions);
-  const context = {};
-  const content = await render(req.path, store, context);
-
-  res.send(content);
-});
-
-app.listen(PORT, () =>
-  console.log(`Frontend service listening on port: ${PORT}`)
-);
+createApp()
+  .then(app =>
+    http.createServer(app.callback()).listen(PORT)
+  )
+  .then(() => console.log(`App listening at port: ${PORT}`))
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
