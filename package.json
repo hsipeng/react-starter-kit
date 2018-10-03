@@ -14,11 +14,11 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "start": "cross-env NODE_ENV=development webpack-serve --open",
+    "dev": "cross-env NODE_ENV=development webpack-serve --open",
     "build": "cross-env NODE_ENV=production webpack",
-    "build-server": "cross-env NODE_ENV=production webpack --config webpack.server.config.js",
     "server-render": "node build/server.js",
-    "serve": "anywhere -d ./build/ -f -l",
+    "server": "npm-run-all build server-render",
+    "static-server": "anywhere -d ./build/ -f -l",
     "stylelint": "stylelint --fix",
     "test": "cross-env NODE_ENV=test jest --env=jsdom --notify --watchman=false",
     "coverage": "cross-env NODE_ENV=test jest --env=jsdom -u --coverage"
@@ -36,7 +36,18 @@
     "plugins": [
       "react-hot-loader/babel",
       "@babel/plugin-syntax-dynamic-import",
-      "@babel/plugin-proposal-class-properties",
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ],
       [
         "module-resolver",
         {
@@ -63,8 +74,19 @@
         "plugins": [
           "react-hot-loader/babel",
           "@babel/plugin-syntax-dynamic-import",
-          "@babel/plugin-proposal-class-properties",
           "@babel/plugin-transform-modules-commonjs",
+          [
+            "@babel/plugin-proposal-decorators",
+            {
+              "legacy": true
+            }
+          ],
+          [
+            "@babel/plugin-proposal-class-properties",
+            {
+              "loose": true
+            }
+          ],
           [
             "module-resolver",
             {
@@ -155,6 +177,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.1",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-transform-modules-commonjs": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
@@ -205,6 +228,8 @@
     "lint-staged": "^7.2.2",
     "lodash-webpack-plugin": "^0.11.5",
     "mini-css-extract-plugin": "^0.4.2",
+    "node-sass": "^4.9.3",
+    "npm-run-all": "^4.1.3",
     "object-assign": "^4.1.1",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.14.2",
@@ -214,6 +239,7 @@
     "react-router-config": "^4.4.0-beta.1",
     "react-test-renderer": "^16.5.1",
     "regenerator-runtime": "^0.12.1",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "styled-components": "^3.4.6",
     "stylelint": "^9.5.0",

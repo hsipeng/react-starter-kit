@@ -11,6 +11,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   mode: 'production',
   devtool: 'source-map',
+  entry: commonPaths.entryPath,
   output: {
     filename: `${commonPaths.jsFolder}/[name].[hash].js`,
     path: commonPaths.outputPath,
@@ -66,6 +67,32 @@ module.exports = {
             },
           },
           'less-loader',
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: false,
+              localIdentName: '[local]___[hash:base64:5]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              // 如果没有options这个选项将会报错 No PostCSS Config found
+              plugins: loader => [
+                // require('postcss-import')({root: loader.resourcePath}),
+                require('autoprefixer')(), //CSS浏览器兼容
+                require('cssnano')(), //压缩css
+              ],
+            },
+          },
+          'sass-loader',
         ],
       },
     ],

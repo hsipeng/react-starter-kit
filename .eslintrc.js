@@ -1,11 +1,20 @@
 module.exports = {
   root: true,
+  parser: 'babel-eslint',
   parserOptions: {
-    // 检查 ES6 语法
-    parser: 'babel-eslint'
+    ecmaVersion: 2019,
+    sourceType: 'module',
+    impliedStrict: true,
+    ecmaFeatures: {
+      jsx: true,
+      impliedStrict: true,
+      globalReturn: false,
+      experimentalObjectRestSpread: true,
+      legacyDecorators: true,
+    },
   },
   env: {
-    browser: true
+    browser: true,
   },
   // extending airbnb config and config derived from eslint-config-prettier
   // 这里是 vue
@@ -28,13 +37,13 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        "bracketSpacing": false,
-        "jsxBracketSameLine": true,
-        "parser": "flow",
-        "printWidth": 60,
-        "singleQuote": true,
-        "trailingComma": "es5"
-      }
+        bracketSpacing: false,
+        jsxBracketSameLine: true,
+        parser: 'flow',
+        printWidth: 60,
+        singleQuote: true,
+        trailingComma: 'es5',
+      },
     ],
     'no-new': 'off', // 禁止在使用new构造一个实例后不赋值
     'space-before-function-paren': 'off', // 函数定义时括号前面不要有空格
@@ -44,8 +53,11 @@ module.exports = {
     'no-param-reassign': 'off', // 不准给函数入参赋值
 
     // react 如果在项目中文件名后缀是 .js 而不是 .jsx 避免报错
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    'react/jsx-filename-extension': [
+      1,
+      {extensions: ['.js', '.jsx']},
+    ],
     // react props validation 错误
-    "react/prop-types": 0,
-  }
+    'react/prop-types': 0,
+  },
 };

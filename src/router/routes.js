@@ -2,6 +2,8 @@ import React from 'react';
 import Avatar from '@/assets/images/avatar.png';
 import Home from '@/pages/home';
 import ReduxHome from '@/pages/reduxHome';
+import Countries from '@/pages/countries';
+import Country from '@/pages/country';
 
 export default [
   {
@@ -22,21 +24,35 @@ export default [
   },
   {
     id: '3',
-    parent: '2',
-    path: '/counter/page2',
-    name: 'counter/page2',
-    component: () => <span>page2</span>,
+    parent: '0',
+    path: '/page2',
+    name: 'page2',
+    component: () => <h1>page2</h1>,
   },
   {
     id: '5',
-    parent: '4',
-    path: '/counter2/img',
-    name: 'counter2/img',
+    parent: '0',
+    path: '/img',
+    name: 'img',
     component: () => (
       <div>
         <img src={Avatar} />
       </div>
     ),
     routes: [],
+  },
+  {
+    id: '6',
+    parent: '0',
+    path: '/countries',
+    name: 'countries',
+    component: Countries,
+  },
+  {
+    id: '7',
+    parent: '6-1',
+    path: '/country/:name',
+    name: 'country',
+    component: Country,
   },
 ];

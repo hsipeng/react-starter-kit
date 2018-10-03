@@ -6,6 +6,7 @@ import store from './redux/store';
 import Router from './router';
 import {BrowserRouter} from 'react-router-dom';
 import '@/assets/style/index.css';
+import '@/assets/scss/main.scss';
 
 ReactDOM.hydrate(
   <Provider store={store}>
