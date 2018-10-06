@@ -14,6 +14,11 @@ module.exports = {
         exclude: /(node_modules)/,
       },
       {
+        test: /\.coffee$/,
+        loader: ['babel-loader', 'coffee-loader'],
+        exclude: /(node_modules)/,
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
         use: [
           {
@@ -41,7 +46,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx', '.coffee'],
     alias: {
       '@': commonPaths.srcPath,
     },

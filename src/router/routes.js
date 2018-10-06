@@ -1,6 +1,7 @@
 import AsyncLoad from '../components/AsyncLoad';
 import React from 'react';
 import Avatar from '../assets/images/avatar.png';
+import CoffeePage from '@/pages/coffee';
 
 const AsyncHome = AsyncLoad({
   loader: () =>
@@ -70,6 +71,14 @@ const routes = [
     path: '/http',
     name: 'http',
     component: AsyncAjax,
+    routes: [],
+  },
+  {
+    id: '7',
+    parent: '0',
+    path: '/coffee-page',
+    name: 'coffee-page',
+    component: CoffeePage,
     routes: [],
   },
 ];
