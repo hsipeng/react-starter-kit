@@ -3,8 +3,8 @@ import LeftMenu from '../components/leftMenu/';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Main from '../components/Main';
-import Style from '../assets/style/index.css';
-import {hot} from 'react-hot-loader';
+import '../assets/style/index.css';
+// import {hot} from 'react-hot-loader';
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <div className={Style.container}>
+        <div className="container">
           <LeftMenu />
           <Main />
         </div>
@@ -26,10 +26,10 @@ class App extends Component {
   }
 }
 
-let HotApp = App;
-if (process.env.NODE_ENV === 'development') {
-  // 热启动
-  HotApp = hot(module)(App);
-}
+// let HotApp = App;
+// if (process.env.NODE_ENV === 'development') {
+//   // 热启动
+//   HotApp = hot(module)(App);
+// }
 
-export default HotApp;
+export default App;

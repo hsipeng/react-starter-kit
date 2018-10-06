@@ -1,11 +1,11 @@
 import React from 'react';
 import routes from '../../router/routes';
-import Style from '../../assets/style/index.css';
+import '../../assets/style/index.css';
 import {Link} from 'react-router-dom';
 import menu from './menu';
 
 const LeftMenu = () => (
-  <div className={Style.leftMenu}>
+  <div className="leftMenu">
     <ul>
       {/* <li>
         <Link to="/">home</Link>

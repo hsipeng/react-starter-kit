@@ -9,10 +9,10 @@ import config from '../config';
 // becomes dead code in builds other than dev,
 // which webpack should pick up and remove.
 
-if (process.env.NODE_ENV === 'development') {
-  // 错误处理 overlay 显示
-  require('webpack-serve-overlay');
-}
+// if (process.env.NODE_ENV === 'development') {
+//   // 错误处理 overlay 显示
+//   require('webpack-serve-overlay');
+// }
 
 ReactDOM.render(
   <Provider store={store}>

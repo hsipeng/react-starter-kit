@@ -14,9 +14,9 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "start": "cross-env NODE_ENV=development webpack-serve --open",
-    "build": "cross-env NODE_ENV=production webpack",
-    "serve": "anywhere -d ./build/ -f -l",
+    "start": "cross-env NODE_ENV=development parcel public/index.html",
+    "build": "cross-env NODE_ENV=production parcel public/index.html",
+    "serve": "anywhere -d ./dist/ -f -l",
     "stylelint": "stylelint --fix",
     "test": "cross-env NODE_ENV=test jest --env=jsdom --notify --watchman=false",
     "coverage": "cross-env NODE_ENV=test jest --env=jsdom -u --coverage"
@@ -42,7 +42,7 @@
             "."
           ],
           "alias": {
-            "@": "./src"
+            "~": "./src"
           }
         }
       ]
@@ -70,7 +70,7 @@
                 "."
               ],
               "alias": {
-                "@": "./src"
+                "~": "./src"
               }
             }
           ]
@@ -204,6 +204,7 @@
     "lodash-webpack-plugin": "^0.11.5",
     "mini-css-extract-plugin": "^0.4.2",
     "object-assign": "^4.1.1",
+    "parcel-bundler": "^1.10.1",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.14.2",
     "prettier-stylelint": "^0.4.2",
